@@ -246,6 +246,14 @@ kubectl --context mumbai exec -n yb-demo mumbai-yugabyte-yb-master-0 -- bash \
 
 ![Screenshot 2024-04-11 at 6 05 49 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/c6a38c8e-04cc-4327-9155-79657ee55db8)
 
+- Tablet servers:
+
+![Screenshot 2024-04-11 at 6 06 24 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/f8af3548-a8cb-468e-ab43-fd24d4aaeddd)
+
+- User tables:
+
+![Screenshot 2024-04-11 at 6 07 51 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/a59539ac-d2cd-47d4-9c3b-3ba5c4b385cf)
+
 - Run YB sample app:
 
 ```sh 
@@ -262,6 +270,29 @@ java -jar yb-sample-apps.jar java-client-sql \
     --num_threads_write 1 \
     --num_threads_read 2
 ```
+
+## Disaster recovery
+
+- Current leaders for master and tablet servers:
+
+![Screenshot 2024-04-11 at 6 27 27 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/ff40d424-fb1c-442f-a8f7-12607bf25dd2)
+![Screenshot 2024-04-11 at 6 30 29 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/593ac280-94b0-46da-bfdd-b382036c16ee)
+
+- Once any region (`hyderabad`) region goes down, a new master and a new tablet server are elected as leaders respectively:
+
+![Screenshot 2024-04-11 at 6 31 54 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/54610491-0ed8-466b-b081-0bd32a6f9da9)
+![Screenshot 2024-04-11 at 6 32 03 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/98fe8605-6d73-4cf4-8fdf-dc2bb6c18f35)
+
+- Yugabyte keeps track of under-replicated tables:
+
+![Screenshot 2024-04-11 at 6 33 07 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/058e5aba-7625-4e54-8a16-51cf565497ba)
+
+- Once the region is restored, the transactions are replicated to the region:
+
+![Screenshot 2024-04-11 at 6 34 23 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/8b349be7-7bc1-444a-8d69-54b81a7f7f83)
+![Screenshot 2024-04-11 at 6 34 29 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/6e8463b8-3779-4a46-acef-759f930c1f51)
+![Screenshot 2024-04-11 at 6 34 35 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/0027b324-692b-4fd2-b9f0-fd9785d52240)
+
 
 ## Setup Kiali for observability
 
@@ -285,6 +316,8 @@ java -jar yb-sample-apps.jar java-client-sql \
 ```sh 
 istioctl dashboard kiali --context singapore
 ```
+
+![Screenshot 2024-04-11 at 6 26 49 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/06c5e4ac-de5c-43eb-be2a-071a7bee1162)
 
 ## Cleaning up the resources
 
