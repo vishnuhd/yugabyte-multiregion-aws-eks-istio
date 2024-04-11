@@ -1,0 +1,16 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: yb-singapore
+  region: ap-southeast-1
+
+managedNodeGroups:
+- name: standard-workers
+  privateNetworking: true
+  instanceType: m5.2xlarge
+  desiredCapacity: 3
+  volumeSize: 80
+  labels: { role: workers }
+  ssh: # import public key from file
+    publicKeyPath: ~/.ssh/id_rsa.pub
