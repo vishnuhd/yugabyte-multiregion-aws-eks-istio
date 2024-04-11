@@ -4,7 +4,7 @@ This repo shows how to install Yugabyte across multiple regions and clusters on 
 
 ## Pre-requisites
 
-- AWS account with atleast three regions enabled
+- AWS account with at least three regions enabled
 - AWS user with access to create VPC and EKS using `eksctl`
 - `eksctl` installed
 - `aws cli` configured and installed
@@ -36,7 +36,7 @@ kubectl config rename-context 'yb-singapore.ap-southeast-1.eksctl.io' singapore
 kubectl config rename-context 'yb-hyderabad.ap-south-2.eksctl.io' hyderabad
 ```
 
-NOTE: By default for EKS does not provide EBS permissions, follow [this](https://repost.aws/knowledge-center/eks-persistent-storage) article to enable EKS PVC dynamic provisioning.
+NOTE: By default, EKS does not provide EBS permissions, follow [this](https://repost.aws/knowledge-center/eks-persistent-storage) article to enable EKS PVC dynamic provisioning.
 
 ## Setup Istio
 
@@ -78,7 +78,7 @@ cd istio-1.21.0/certs
 }
 ```
 
-- In each cluster, create a secret cacerts including all the input files `ca-cert.pem`, `ca-key.pem`, `root-cert.pem` and `cert-chain.pem` :
+- In each cluster, create secret `cacerts` including all the input files `ca-cert.pem`, `ca-key.pem`, `root-cert.pem` and `cert-chain.pem` :
 
 ```sh 
 {
@@ -246,7 +246,7 @@ kubectl --context mumbai exec -n yb-demo mumbai-yugabyte-yb-master-0 -- bash \
 -c "/home/yugabyte/master/bin/yb-admin --master_addresses mumbai-yugabyte-yb-master-0.yb-demo.svc.cluster.local,hyderabad-yugabyte-yb-master-0.yb-demo.svc.cluster.local,singapore-yugabyte-yb-master-0.yb-demo.svc.cluster.local modify_placement_info aws.ap-south-1.ap-south-1a,aws.ap-south-2.ap-south-2a,aws.ap-southeast-1.ap-southeast-1a 3"
 ```
 
-- Now that the YugabyteDB installation is successful, open the master UI in browser:
+- Now that the YugabyteDB installation is successful, open the master UI in the browser:
 
 ![Screenshot 2024-04-11 at 6 05 49 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/c6a38c8e-04cc-4327-9155-79657ee55db8)
 
