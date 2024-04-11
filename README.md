@@ -12,8 +12,7 @@ This repo shows how to install Yugabyte across multiple regions and clusters on 
 
 ## Architecture
 
-![Screenshot 2024-04-11 at 6 26 49 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/87a0b24c-5fea-453c-9057-1de64dbf0c44)
-
+![yb-multi-cluster-istio-2024-04-05-1446](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/29086083-cd24-4466-9214-99bcb57c4c9e)
 
 ## Deploy AWS EKS clusters
 
