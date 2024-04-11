@@ -242,6 +242,10 @@ kubectl --context mumbai exec -n yb-demo mumbai-yugabyte-yb-master-0 -- bash \
 -c "/home/yugabyte/master/bin/yb-admin --master_addresses mumbai-yugabyte-yb-master-0.yb-demo.svc.cluster.local,hyderabad-yugabyte-yb-master-0.yb-demo.svc.cluster.local,singapore-yugabyte-yb-master-0.yb-demo.svc.cluster.local modify_placement_info aws.ap-south-1.ap-south-1a,aws.ap-south-2.ap-south-2a,aws.ap-southeast-1.ap-southeast-1a 3"
 ```
 
+- Now that the YugabyteDB installation is successful, open the master UI in browser:
+
+![Screenshot 2024-04-11 at 6 05 49 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/c6a38c8e-04cc-4327-9155-79657ee55db8)
+
 - Run YB sample app:
 
 ```sh 
