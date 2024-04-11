@@ -10,6 +10,11 @@ This repo shows how to install Yugabyte across multiple regions and clusters on 
 - `aws cli` configured and installed
 - `kubectl` installed
 
+## Architecture
+
+![Screenshot 2024-04-11 at 6 26 49 PM](https://github.com/vishnuhd/yugabyte-multiregion-aws-eks-istio/assets/35323586/87a0b24c-5fea-453c-9057-1de64dbf0c44)
+
+
 ## Deploy AWS EKS clusters
 
 - Deploy EKS clusters in two different regions :
