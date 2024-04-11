@@ -1,0 +1,53 @@
+isMultiAz: True
+
+AZ: ap-south-1a
+
+istioCompatibility:
+  enabled: true
+
+multicluster:
+  createServicePerPod: true
+  createCommonTserverService: true
+
+masterAddresses: "mumbai-yugabyte-yb-master-0.yb-demo.svc.cluster.local,hyderabad-yugabyte-yb-master-0.yb-demo.svc.cluster.local,singapore-yugabyte-yb-master-0.yb-demo.svc.cluster.local"
+
+oldNamingStyle: false
+
+storage:
+  master:
+    storageClass: "gp2"
+  tserver:
+    storageClass: "gp2"
+
+replicas:
+  master: 1
+  tserver: 1
+  totalMasters: 3
+
+gflags:
+  master:
+    placement_cloud: "aws"
+    placement_region: "ap-south-1"
+    placement_zone: "ap-south-1a"
+    leader_failure_max_missed_heartbeat_periods: 10
+  tserver:
+    placement_cloud: "aws"
+    placement_region: "ap-south-1"
+    placement_zone: "ap-south-1a"
+    leader_failure_max_missed_heartbeat_periods: 10
+
+# resource:
+#   master:
+#     requests:
+#       cpu: "2"
+#       memory: 2Gi
+#     limits:
+#       cpu: "2"
+#       memory: 2Gi
+#   tserver:
+#     requests:
+#       cpu: "4"
+#       memory: 8Gi
+#     limits:
+#       cpu: "4"
+#       memory: 8Gi

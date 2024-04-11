@@ -1,0 +1,58 @@
+# Source: yugabyte/templates/multicluster/service-per-pod.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: "singapore-yugabyte-yb-master-0"
+  labels:    
+    app.kubernetes.io/name: "yb-master"    
+    heritage: "Helm"
+    release: "singapore"
+    chart: "yugabyte"
+    component: "yugabytedb"
+    service-type: "non-endpoint"
+spec:
+  ports:
+    - name: "http-ui"
+      port: 7000
+    - name: "tcp-rpc-port"
+      port: 7100
+  selector:
+    statefulset.kubernetes.io/pod-name: "singapore-yugabyte-yb-master-0"    
+    app.kubernetes.io/name: "yb-master"
+    release: "singapore"
+---
+# Source: yugabyte/templates/multicluster/service-per-pod.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: "singapore-yugabyte-yb-tserver-0"
+  labels:    
+    app.kubernetes.io/name: "yb-tserver"    
+    heritage: "Helm"
+    release: "singapore"
+    chart: "yugabyte"
+    component: "yugabytedb"
+    service-type: "non-endpoint"
+spec:
+  ports:
+    - name: "http-ui"
+      port: 9000
+    - name: "http-ycql-met"
+      port: 12000
+    - name: "http-yedis-met"
+      port: 11000
+    - name: "http-ysql-met"
+      port: 13000
+    - name: "tcp-rpc-port"
+      port: 9100
+    - name: "tcp-yedis-port"
+      port: 6379
+    - name: "tcp-yql-port"
+      port: 9042
+    - name: "tcp-ysql-port"
+      port: 5433
+  selector:
+    statefulset.kubernetes.io/pod-name: "singapore-yugabyte-yb-tserver-0"    
+    app.kubernetes.io/name: "yb-tserver"
+    release: "singapore"
+---
