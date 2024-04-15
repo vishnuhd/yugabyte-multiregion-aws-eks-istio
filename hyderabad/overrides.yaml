@@ -9,7 +9,6 @@ multicluster:
   createServicePerPod: true
   createCommonTserverService: true
 
-#masterAddresses: "{yb-demo-ap-south-1a-yugabyte-yb-master-0.yb-demo.svc.cluster.local},{yb-demo-ap-south-2a-yugabyte-yb-master-0.yb-demo.svc.cluster.local,yb-demo-ap-south-2a-yugabyte-yb-master-0.yb-demo-ap-south-2a-yugabyte-yb-masters.yb-demo.svc.cluster.local},{yb-demo-ap-southeast-1a-yugabyte-yb-master-0.yb-demo.svc.cluster.local}"
 masterAddresses: "mumbai-yugabyte-yb-master-0.yb-demo.svc.cluster.local,hyderabad-yugabyte-yb-master-0.yb-demo.svc.cluster.local,singapore-yugabyte-yb-master-0.yb-demo.svc.cluster.local"
 
 oldNamingStyle: false
