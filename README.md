@@ -16,7 +16,7 @@ This repo shows how to install Yugabyte across multiple regions and clusters on 
 
 ## Deploy AWS EKS clusters
 
-- Deploy EKS clusters in two different regions :
+- Deploy EKS clusters in three different regions :
 
 ```sh 
 {
